@@ -1,13 +1,13 @@
-export const ImageGalleryItem = ({ hits }) => {
+export const ImageGalleryItem = ({ hits, onLargeImage }) => {
   return (
     <>
-      {hits.map(({ id, webformatURL }) => (
-        <li key={id}>
+      {hits.map(({ id, webformatURL, largeImageURL, tags }) => (
+        <li key={id} className="ImageGalleryItem ">
           <img
+            className="ImageGalleryItem-image"
             src={webformatURL}
-            alt="response from API"
-
-            // onClick={() => onImage(largeImageURL, tags, id)}
+            alt={tags}
+            onClick={() => onLargeImage({ largeImageURL, tags, id })}
           />
         </li>
       ))}

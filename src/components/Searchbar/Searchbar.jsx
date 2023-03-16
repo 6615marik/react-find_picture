@@ -6,11 +6,16 @@ export class SerchBar extends Component {
   };
   inputText = e => {
     e.preventDefault();
-    this.props.onSubmit(this.state);
+    if (this.state.inputValue.trim() === '') {
+      alert('Еnter a name to search for a picture');
+    } else {
+      this.props.onSubmit(this.state.inputValue);
+    }
     this.setState({ inputValue: '' });
   };
   inputChange = e => {
     const { value } = e.target;
+
     this.setState({ inputValue: value });
   };
   render() {
